@@ -9,7 +9,7 @@ mkdir build
   -fvisibility=hidden ^
   -O3 ^
   --sysroot="wasi-sdk/share/wasi-sysroot" ^
-  main.cpp -o "build/bot.wasm"
+  "src/main.cpp" -o "build/bot.wasm"
 
 
   
