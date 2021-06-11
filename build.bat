@@ -5,15 +5,15 @@ mkdir build
   -fno-exceptions ^
   -Wl,--no-entry ^
   -Wl,--strip-all ^
-  -Wl,--export-dynamic ^
   -fvisibility=hidden ^
-  -O3 ^
+  -Ofast ^
   --sysroot="wasi-sdk/share/wasi-sysroot" ^
   "src/main.cpp" -o "build/bot.wasm"
 
 
   
+@REM   -Wl,--export-dynamic ^
 @REM   -Wl,--import-memory ^
 
 
-node "yare.io-wasm/wasm" "build/bot.wasm"
+node "yare.io-wasm/wasm2yareio" "build/bot.wasm"
