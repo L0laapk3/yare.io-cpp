@@ -6,6 +6,7 @@ mkdir build
   -Wl,--no-entry ^
   -Wl,--import-memory ^
   -Wl,--strip-all ^
+  -Wl,--stack-first ^
   -fvisibility=hidden ^
   -Ofast ^
   --sysroot="wasi-sdk/share/wasi-sysroot" ^

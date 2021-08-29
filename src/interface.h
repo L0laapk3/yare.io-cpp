@@ -1,14 +1,7 @@
 #pragma once
 
 #include "position.h"
-
-
-enum Shape {
-	Circle = 0,
-	Square = 1,
-	Triangle = 2,
-};
-
+#include "shape.h"
 
 
 #define IMPORT(module, name) __attribute__((import_module(module), import_name(name)))
