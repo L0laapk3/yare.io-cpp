@@ -12,9 +12,5 @@ mkdir build
   "src/main.cpp" -o "build/bot.wasm"
 
 
-  
-@REM   -Wl,--export-dynamic ^
-@REM   -Wl,--import-memory ^
-
 
 node "yare.io-wasm/wasm2yareio" "build/bot.wasm"
