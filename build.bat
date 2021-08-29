@@ -4,6 +4,7 @@ mkdir build
   -nostartfiles ^
   -fno-exceptions ^
   -Wl,--no-entry ^
+  -Wl,--import-memory ^
   -Wl,--strip-all ^
   -fvisibility=hidden ^
   -Ofast ^
