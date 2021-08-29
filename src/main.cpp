@@ -1,38 +1,22 @@
-#include <string>
 
-
-#define IMPORT(module, name) __attribute__((import_module(module), import_name(name)))
-#define EXPORT(name) __attribute__((export_name(name)))
-
-
-IMPORT("players", "me") int myPlayerId();
-
-IMPORT("spirits", "energizeBase") void energizeBase(int, int);
-IMPORT("spirits", "move") void move(int, float, float);
-IMPORT("spirits", "count") int count();
-IMPORT("spirits", "playerId") int playerId(int);
-IMPORT("spirits", "shout") void shout(int, const char*);
-
-IMPORT("bases", "positionX") float basePositionX(int);
-IMPORT("bases", "positionY") float basePositionY(int);
-
-IMPORT("console", "log") void log(const char*);
+#include "interface.h"
+#include "printf.h"
 
 
 
 EXPORT("tick")
-void tick() {
-	log("cpp is awesome!");
+void tick(int tick, bool initialize) {
+	println("cpp is awesome! tick: %i", tick);
 
-	auto myId = myPlayerId();
+	auto myId = Interface::Player::me();
 
-	auto baseX = basePositionX(0);
-	auto baseY = basePositionY(0);
-	for (int i = 0; i < count(); i++) {
-		if (playerId(i) == myId) {
-			shout(i, "cpp 💖");
-			move(i, baseX, baseY);
-			energizeBase(i, 0);
+	auto baseX = Interface::Base::positionX(0);
+	auto baseY = Interface::Base::positionY(0);
+	for (int i = 0; i < Interface::Spirit::count(); i++) {
+		if (Interface::Spirit::playerId(i) == myId) {
+			Interface::Spirit::shout(i, "cpp 💖");
+			Interface::Spirit::move(i, baseX, baseY);
+			Interface::Spirit::energizeBase(i, 0);
 		}
 	}
 }
